@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spring 2026 EOC Remediation Brief — Biology &amp; US History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF8F1; --ink:#1B1714; --ink-soft:#544C42; --line:#DAD0BE;
+    --accent:#0F4C4A; --accent-soft:#E4EDEB;
+    --below:#B23A2F; --below-bg:#F5DCD7;
+    --appr:#BE7C1E; --appr-bg:#F6E8CF;
+    --met:#2F7D5B; --met-bg:#D9EBE0;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"IBM Plex Sans",sans-serif;line-height:1.5;
+    -webkit-font-smoothing:antialiased;font-size:15px}
+  .num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+  /* Masthead */
+  header{border-bottom:3px solid var(--ink);padding:46px 0 30px;margin-bottom:0}
+  .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:14px}
+  h1{font-family:"Fraunces",serif;font-weight:600;font-size:46px;
+    line-height:1.04;letter-spacing:-.015em;max-width:14ch}
+  .sub{margin-top:14px;color:var(--ink-soft);font-size:15.5px;max-width:60ch}
+  .meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 26px;
+    font-size:13px;color:var(--ink-soft)}
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* Sticky nav */
+  nav{position:sticky;top:0;z-index:30;background:var(--paper);
+    border-bottom:1px solid var(--line);backdrop-filter:saturate(140%)}
+  nav .wrap{display:flex;gap:4px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  nav a{font-size:12.5px;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--ink-soft);text-decoration:none;
+    padding:8px 14px;border-radius:999px;transition:.15s}
+  nav a:hover{background:var(--accent-soft);color:var(--accent)}
+
+  section{padding:54px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;
+    color:var(--accent);font-weight:600}
+  h2{font-family:"Fraunces",serif;font-weight:600;font-size:30px;
+    letter-spacing:-.01em}
+  .sec-intro{color:var(--ink-soft);max-width:74ch;margin:10px 0 30px;font-size:15px}
+
+  /* Stat strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin-top:34px}
+  .stat{background:var(--card);padding:22px 22px 20px}
+  .stat .v{font-family:"Fraunces",serif;font-size:40px;font-weight:600;
+    line-height:1;letter-spacing:-.02em}
+  .stat .v.alarm{color:var(--below)}
+  .stat .l{margin-top:9px;font-size:12px;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .stat .d{margin-top:5px;font-size:12.5px;color:var(--ink-soft)}
+
+  /* Group domain bars */
+  .grpgrid{display:grid;grid-template-columns:1fr 1fr;gap:42px}
+  @media(max-width:880px){.grpgrid{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}}
+  .gcard h3{font-family:"Fraunces",serif;font-size:21px;font-weight:600;
+    padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:20px;
+    display:flex;justify-content:space-between;align-items:baseline}
+  .gcard h3 span{font-family:"IBM Plex Mono",monospace;font-size:12px;
+    color:var(--ink-soft);font-weight:500}
+  .drow{margin-bottom:18px}
+  .drow .dl{display:flex;justify-content:space-between;font-size:13px;
+    margin-bottom:6px;font-weight:500}
+  .drow .dl .pct{font-family:"IBM Plex Mono",monospace;color:var(--ink-soft);
+    font-size:12px}
+  .bar{display:flex;height:26px;border-radius:3px;overflow:hidden;
+    border:1px solid rgba(0,0,0,.06)}
+  .bar i{display:flex;align-items:center;justify-content:center;
+    font-style:normal;font-size:11px;font-weight:600;color:#fff;
+    font-family:"IBM Plex Mono",monospace;min-width:0;transition:.2s}
+  .bar .b{background:var(--below)} .bar .a{background:var(--appr)}
+  .bar .m{background:var(--met)}
+  .legend{display:flex;gap:20px;flex-wrap:wrap;margin-top:8px;font-size:12.5px;
+    color:var(--ink-soft);align-items:center}
+  .legend span{display:flex;align-items:center;gap:7px}
+  .sw{width:13px;height:13px;border-radius:3px;display:inline-block}
+  .sw.b{background:var(--below)} .sw.a{background:var(--appr)}
+  .sw.m{background:var(--met)}
+
+  /* Matrix */
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+    margin-bottom:22px}
+  .seg{display:inline-flex;border:1px solid var(--ink);border-radius:999px;
+    overflow:hidden}
+  .seg button{font-family:inherit;font-size:13px;font-weight:600;
+    padding:9px 20px;background:transparent;border:0;cursor:pointer;
+    color:var(--ink);transition:.15s}
+  .seg button.on{background:var(--ink);color:var(--paper)}
+  .sortsel{font-family:inherit;font-size:13px;font-weight:500;
+    padding:9px 14px;border:1px solid var(--line);border-radius:8px;
+    background:var(--card);color:var(--ink);cursor:pointer}
+  .mtable{width:100%;border-collapse:collapse;font-size:13px;
+    background:var(--card);border:1px solid var(--line)}
+  .mtable th,.mtable td{padding:9px 10px;text-align:center;
+    border-bottom:1px solid var(--line);border-right:1px solid #EDE6D6}
+  .mtable th{font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:600;background:#F4EFE2;position:sticky;
+    top:54px;vertical-align:bottom;line-height:1.25}
+  .mtable th.stu,.mtable td.stu{text-align:left;font-weight:600;
+    white-space:nowrap;position:sticky;left:0;background:var(--card);
+    border-right:2px solid var(--line)}
+  .mtable th.stu{background:#F4EFE2;z-index:2}
+  .mtable td.gcs{font-family:"IBM Plex Mono",monospace;font-weight:600}
+  .gcs-bad{color:var(--below)}
+  .cell{font-weight:600;font-size:11px;letter-spacing:.03em}
+  .cell.B{background:var(--below-bg);color:var(--below)}
+  .cell.A{background:var(--appr-bg);color:var(--appr)}
+  .cell.M{background:var(--met-bg);color:var(--met)}
+  .mtable tr:hover td{filter:brightness(.97)}
+  .mtable tr:hover td.stu{filter:none;background:var(--accent-soft)}
+  .cohort-sum{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0 4px}
+  @media(max-width:880px){.cohort-sum{grid-template-columns:1fr 1fr 1fr}}
+  .cs{background:var(--card);padding:14px}
+  .cs .nm{font-size:11.5px;font-weight:600;line-height:1.3;min-height:30px}
+  .cs .big{font-family:"Fraunces",serif;font-size:30px;font-weight:600;
+    color:var(--below);margin-top:8px;line-height:1}
+  .cs .sm{font-size:11px;color:var(--ink-soft);margin-top:4px}
+  .scroll{overflow-x:auto;border-radius:6px}
+  .note{font-size:12.5px;color:var(--ink-soft);margin-top:14px;
+    padding-left:14px;border-left:3px solid var(--line);font-style:italic}
+
+  /* Plan */
+  .planhead{display:flex;align-items:baseline;gap:14px;margin:34px 0 14px}
+  .planhead h3{font-family:"Fraunces",serif;font-size:23px;font-weight:600}
+  .planhead .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;
+    font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--paper);background:var(--accent);padding:4px 10px;border-radius:4px}
+  .weeks{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line)}
+  @media(max-width:880px){.weeks{grid-template-columns:1fr}}
+  .wk{background:var(--card);padding:24px 22px}
+  .wk .wn{font-family:"IBM Plex Mono",monospace;font-size:12px;
+    font-weight:600;color:var(--accent);letter-spacing:.08em;
+    text-transform:uppercase}
+  .wk h4{font-family:"Fraunces",serif;font-size:18px;font-weight:600;
+    margin:8px 0 6px;line-height:1.2}
+  .wk .foc{font-size:12px;color:var(--ink-soft);margin-bottom:16px;
+    padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .wk ul{list-style:none}
+  .wk li{font-size:13px;padding:7px 0 7px 20px;position:relative;
+    color:var(--ink);border-bottom:1px dotted #E7DFCE}
+  .wk li:last-child{border-bottom:0}
+  .wk li::before{content:"";position:absolute;left:2px;top:13px;width:7px;
+    height:7px;background:var(--accent);border-radius:2px}
+  .wk li b{font-weight:600}
+  .pgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;margin-top:22px}
+  @media(max-width:880px){.pgrid{grid-template-columns:1fr}}
+  .pblock h5{font-family:"IBM Plex Sans";font-size:13px;font-weight:700;
+    letter-spacing:.04em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:12px}
+  .pblock p,.pblock li{font-size:13.5px;color:var(--ink);line-height:1.62}
+  .pblock ul{margin:8px 0 8px 18px}
+  .pblock li{margin-bottom:7px}
+  .blockmodel{background:var(--accent);color:var(--paper);padding:22px 24px;
+    border-radius:6px;margin:28px 0 8px}
+  .blockmodel strong{display:block;font-size:13px;text-transform:uppercase;
+    letter-spacing:.06em;margin-bottom:14px;color:var(--paper);opacity:.85}
+  .bm-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+    background:rgba(255,255,255,.18)}
+  @media(max-width:880px){.bm-row{grid-template-columns:1fr}}
+  .bm-row span{background:var(--accent);padding:12px 14px;font-size:12px;
+    line-height:1.5}
+  .bm-row b{font-family:"IBM Plex Mono",monospace;display:block;
+    font-size:12px;margin-bottom:4px;color:#9FD4CC;font-weight:600}
+  .priority{background:var(--card);border:1px solid var(--line);
+    border-left:4px solid var(--below);padding:18px 22px;margin:22px 0;
+    border-radius:0 6px 6px 0}
+  .priority strong{display:block;font-size:13px;text-transform:uppercase;
+    letter-spacing:.05em;margin-bottom:8px;color:var(--below)}
+  .priority p{font-size:13.5px;color:var(--ink-soft)}
+  footer{padding:40px 0 70px;color:var(--ink-soft);font-size:12.5px}
+
+  /* Remediation resource panel */
+  .resw{margin:30px 0 6px}
+  .resw .rhead{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .resw .rhead h3{font-family:"Fraunces",serif;font-size:23px;font-weight:600}
+  .resw .rhead .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;
+    font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--paper);background:var(--below);padding:4px 10px;border-radius:4px}
+  .resw .rsub{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px;max-width:74ch}
+  .resgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line)}
+  @media(max-width:880px){.resgrid{grid-template-columns:1fr 1fr}}
+  .rl{background:var(--card);padding:18px 18px;text-decoration:none;
+    color:var(--ink);display:block;transition:.15s}
+  .rl:hover{background:var(--accent-soft)}
+  .rl .rc{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .rl .rt{font-family:"Fraunces",serif;font-size:15px;font-weight:600;
+    margin:7px 0 4px;line-height:1.22}
+  .rl .rd{font-size:11.5px;color:var(--ink-soft);line-height:1.4}
+  .rl .rg{margin-top:10px;font-size:11.5px;font-weight:600;color:var(--accent)}
+  .reshub{display:inline-block;margin-top:14px;font-size:12.5px;
+    font-weight:600;color:var(--accent);text-decoration:none}
+  .reshub:hover{text-decoration:underline}
+  .foc a{color:var(--accent);font-weight:600;text-decoration:none;
+    border-bottom:1px solid var(--accent-soft)}
+  .foc a:hover{border-bottom-color:var(--accent)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+
+  @media print{
+    nav{display:none} body{font-size:11.5px;background:#fff}
+    section{padding:24px 0;break-inside:avoid}
+    .stat .v,.cs .big{font-size:26px} h1{font-size:32px} h2{font-size:22px}
+    .scroll{overflow:visible}
+    .mtable th{position:static}
+    .mtable th.stu,.mtable td.stu{position:static}
+    a{color:inherit;text-decoration:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">McIntosh County Academy &middot; Instructional Coaching</div>
+    <h1>Spring 2026 EOC Remediation Brief</h1>
+    <p class="sub">Domain-level performance and a three-week remediation plan for Biology and United States History students scoring at or below a Grade Conversion Score of 69.</p>
+    <div class="meta">
+      <span><b>Assessment:</b> Georgia Milestones EOC, Spring 2026 (Preliminary ISR)</span>
+      <span><b>Cut point:</b> Grade Conversion Score &le; 69</span>
+      <span><b>Schedule:</b> Mon&ndash;Thu, 9:00&ndash;12:00 &middot; 12 sessions over 3 weeks</span>
+      <span><b>Frameworks:</b> GSE &middot; Milestones ALDs &middot; BWD &middot; DOK</span>
+    </div>
+  </div>
+</header>
+
+<nav><div class="wrap">
+  <a href="#summary">Cohort Summary</a>
+  <a href="#group">Whole-Group Domains</a>
+  <a href="#matrix">Remediation Matrix</a>
+  <a href="#plan-bio">Biology Plan</a>
+  <a href="#plan-ush">US History Plan</a>
+</div></nav>
+
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Cohort Summary</h2></div>
+    <p class="sec-intro">This section reports the size of the remediation cohort: every Biology and US History student whose Grade Conversion Score is at or below 69. The tiles below show the total cohort, the per-course breakdown against all students tested, and the share of the cohort's domain marks that fall in Below Target.</p>
+    <div class="stats" id="statStrip"></div>
+  </div>
+</section>
+
+<section id="group">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Whole-Group Domain Performance</h2></div>
+    <p class="sec-intro">All tested students in each course, not just the remediation cohort. Bars show the share of students at each Milestones domain-achievement category (Below Target: not likely proficient, Approaching Target: somewhat likely, Met Target: likely). This is the context for where the cohort sits relative to the full group.</p>
+    <div class="grpgrid" id="grpGrid"></div>
+    <div class="legend" style="margin-top:26px">
+      <span><i class="sw b"></i> Below Target</span>
+      <span><i class="sw a"></i> Approaching Target</span>
+      <span><i class="sw m"></i> Met Target</span>
+      <span style="margin-left:auto;font-style:italic">n = students tested in course</span>
+    </div>
+  </div>
+</section>
+
+<section id="matrix">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Remediation Cohort &mdash; Student &times; Domain Matrix</h2></div>
+    <p class="sec-intro">Every student at or below GCS 69, with their domain achievement on each reporting category. Red is Below Target, amber is Approaching, green is Met. Toggle the subject and re-sort to plan grouping and intervention rosters.</p>
+    <div class="controls">
+      <div class="seg" id="subjSeg">
+        <button data-s="biology" class="on">Biology</button>
+        <button data-s="ushistory">US History</button>
+      </div>
+      <select class="sortsel" id="sortSel">
+        <option value="gcs">Sort: GCS (low to high)</option>
+        <option value="gcsd">Sort: GCS (high to low)</option>
+        <option value="name">Sort: Name (A&ndash;Z)</option>
+        <option value="below">Sort: Most domains Below</option>
+      </select>
+    </div>
+    <div class="cohort-sum" id="cohortSum"></div>
+    <div class="legend" style="margin:6px 0 22px">
+      <span><i class="sw b"></i> Below Target</span>
+      <span><i class="sw a"></i> Approaching Target</span>
+      <span><i class="sw m"></i> Met Target</span>
+      <span style="margin-left:auto;font-style:italic">Domain summary tiles above count cohort students Below Target</span>
+    </div>
+    <div class="scroll"><table class="mtable" id="mtable"></table></div>
+    <p class="note">Domain markers were read from the visual achievement indicators in the Preliminary ISR (the report does not encode them as text). Grade Conversion Scores and names are extracted directly. Spot-validated against source pages at 100% agreement; treat as preliminary pending the final ISR release.</p>
+  </div>
+</section>
+
+<section id="plan-bio">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Three-Week Remediation Plan</h2></div>
+    <p class="sec-intro">Two parallel plans, one per course, scoped to <b>12 work sessions: Monday through Thursday, 9:00&ndash;12:00, for three weeks</b>. Each session is a 3-hour block, segmented (not a single lecture) into a retrieval warm-up, a direct-instruction core, guided practice, and a checkpoint or item-analysis close. Both plans follow the same logic: the cohort is Below Target nearly everywhere, so Week 1 rebuilds the highest-leverage foundational domain, Week 2 attacks the heaviest strands and interleaves Week 1, and Week 3 integrates and runs a full simulated retest under conditions.</p>
+
+    <div class="blockmodel">
+      <strong>The 3-hour block (every session, both courses)</strong>
+      <div class="bm-row">
+        <span><b>9:00&ndash;9:20</b> Spaced retrieval warm-up &mdash; mixed items from prior sessions. Retrieval is the intervention, not review.</span>
+        <span><b>9:20&ndash;10:25</b> Direct-instruction core &mdash; the session's target domain, concrete model before vocabulary.</span>
+        <span><b>10:25&ndash;10:35</b> Break.</span>
+        <span><b>10:35&ndash;11:35</b> Guided to independent practice &mdash; faded scaffolding, stimulus-based released items.</span>
+        <span><b>11:35&ndash;12:00</b> Checkpoint or error analysis &mdash; logged to the Sheets pipeline by GSE domain.</span>
+      </div>
+    </div>
+
+    <div class="priority">
+      <strong>Biology &mdash; diagnostic reality</strong>
+      <p>Of 12 cohort students, the large majority are Below Target in every domain. There is no single weak strand to patch; the deficit is course-wide. Sequencing follows GSE prerequisite structure: Cells underpins Genetics, which underpins Evolution and Classification. Ecology is the most self-contained and is used as the confidence re-entry point in Week 1.</p>
+    </div>
+
+    <div class="planhead"><span class="tag">Biology</span><h3>12-Session Sequence &middot; Mon&ndash;Thu, 9&ndash;12</h3></div>
+    <div class="weeks">
+      <div class="wk">
+        <div class="wn">Week 1 &middot; Mon&ndash;Thu (S1&ndash;S4)</div>
+        <h4>Cells &amp; Ecology: rebuild the floor</h4>
+        <div class="foc">Targets <a href="biology-remediation/sb1-cells.html">SB1 (Cells)</a> and <a href="biology-remediation/sb5-ecology.html">SB5 (Ecology)</a>. Ecology front-loaded as accessible re-entry; Cells as the prerequisite spine.</div>
+        <ul>
+          <li><b>S1 Mon:</b> Full diagnostic, ~24 released items, all 5 domains, DOK 1&ndash;3 (uses the longer block). Confirms per-student gaps; not for grades. PM half: Cell structure and function.</li>
+          <li><b>S2 Tue:</b> Cellular transport, homeostasis, cell energy (photosynthesis vs respiration) at DOK 2. Close on a Cells checkpoint.</li>
+          <li><b>S3 Wed:</b> Ecology: energy flow, biogeochemical cycles, population interactions. Stimulus-annotation protocol introduced.</li>
+          <li><b>S4 Thu:</b> Cells + Ecology integration; mixed 16-item checkpoint, paired error analysis. Flex-group for Week 2 set here.</li>
+        </ul>
+      </div>
+      <div class="wk">
+        <div class="wn">Week 2 &middot; Mon&ndash;Thu (S5&ndash;S8)</div>
+        <h4>Genetics &amp; Evolution: the heaviest strands</h4>
+        <div class="foc">Targets <a href="biology-remediation/sb2-sb3-genetics-heredity.html">SB2/SB3 (Cellular Genetics &amp; Heredity)</a> and <a href="biology-remediation/sb6-evolution.html">SB6 (Evolution)</a>, the two domains with the deepest cohort Below counts.</div>
+        <ul>
+          <li><b>S5 Mon:</b> DNA structure, replication, protein synthesis as a cause-effect chain, anchored to Week 1 Cells.</li>
+          <li><b>S6 Tue:</b> Inheritance, Punnett squares, pedigrees, DOK 2&ndash;3. Worked example to faded practice across the full block.</li>
+          <li><b>S7 Wed:</b> Mechanisms of evolution: selection, drift, speciation, lines of evidence. Data-interpretation items.</li>
+          <li><b>S8 Thu:</b> Interleaved retrieval (Cells, Ecology, Genetics, Evolution); cumulative checkpoint. Individual conferences with the 3&ndash;4 lowest.</li>
+        </ul>
+      </div>
+      <div class="wk">
+        <div class="wn">Week 3 &middot; Mon&ndash;Thu (S9&ndash;S12)</div>
+        <h4>Classification &amp; full integration</h4>
+        <div class="foc">Targets <a href="biology-remediation/sb4-classification-phylogeny.html">SB4 (Classification &amp; Phylogeny)</a>, the lightest EOC weight, then full simulated retest.</div>
+        <ul>
+          <li><b>S9 Mon:</b> Classification, cladograms, phylogeny as pattern reading tied to evolution evidence. PM half: stimulus-load test strategy (passage and graphic attack, elimination, time budgeting).</li>
+          <li><b>S10 Tue:</b> Full-length simulated EOC, all domains, timed under conditions. Sheets-logged for item analysis.</li>
+          <li><b>S11 Wed:</b> Targeted reteach driven by S10 item analysis; small flexible groups by weakest domain.</li>
+          <li><b>S12 Thu:</b> Second short simulation on the weakest 2 domains; exit data, MTSS escalation flags, parent/teacher summary.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="resw">
+      <div class="rhead">
+        <h3>Standard-Tied Remediation Resources &middot; Biology</h3>
+        <span class="tag">Standard-Tied</span>
+      </div>
+      <p class="rsub">One scaffolded pack per EOC reporting domain, built for the below-target cohort (GCS &le;69). No Biology specialist is assigned to this cohort: each pack now carries a no-content-call facilitator routing tree, a self-score protocol, and a domain-locked in-room AI tutor, and the Facilitator Field Guide gives the out-of-field teacher a session-by-session run-of-show. Sequence the packs against the 12-session plan above.</p>
+      <div class="resgrid">
+        <a class="rl" href="biology-remediation/sb1-cells.html">
+          <div class="rc">SB1</div>
+          <div class="rt">Cells</div>
+          <div class="rd">Organelles &amp; homeostasis, cellular reproduction, macromolecules, transport, photosynthesis vs respiration.</div>
+          <div class="rg">Week 1 &middot; S1&ndash;S4</div>
+        </a>
+        <a class="rl" href="biology-remediation/sb2-sb3-genetics-heredity.html">
+          <div class="rc">SB2 &middot; SB3</div>
+          <div class="rt">Genetics &amp; Heredity</div>
+          <div class="rd">DNA structure &amp; replication, protein synthesis, inheritance, Punnett squares, pedigrees.</div>
+          <div class="rg">Week 2 &middot; S5&ndash;S6</div>
+        </a>
+        <a class="rl" href="biology-remediation/sb4-classification-phylogeny.html">
+          <div class="rc">SB4</div>
+          <div class="rt">Classification &amp; Phylogeny</div>
+          <div class="rd">Clades, cladograms, phylogenetic pattern reading, viruses.</div>
+          <div class="rg">Week 3 &middot; S9</div>
+        </a>
+        <a class="rl" href="biology-remediation/sb5-ecology.html">
+          <div class="rc">SB5</div>
+          <div class="rt">Ecology</div>
+          <div class="rd">Energy flow, biogeochemical cycles, population interactions, interdependence.</div>
+          <div class="rg">Week 1 &middot; S3&ndash;S4</div>
+        </a>
+        <a class="rl" href="biology-remediation/sb6-evolution.html">
+          <div class="rc">SB6</div>
+          <div class="rt">Theory of Evolution</div>
+          <div class="rd">Natural selection, genetic drift, speciation, lines of evidence.</div>
+          <div class="rg">Week 2 &middot; S7&ndash;S8</div>
+        </a>
+      </div>
+      <a class="reshub" href="biology-remediation/index.html">Open the resource hub &rarr;</a>
+      <a class="reshub" href="biology-remediation/facilitator-field-guide.html" style="margin-left:22px">Facilitator Field Guide (no science teacher assigned) &rarr;</a>
+    </div>
+
+    <div class="pgrid">
+      <div class="pblock">
+        <h5>Grouping &amp; delivery</h5>
+        <ul>
+          <li>Run S1, S4, S8, S10 whole-cohort; flex-group S3, S7, S11 by S1 and S8 data.</li>
+          <li>Pair students Below in all 5 domains with a single recovery teacher for the core block; do not distribute them across groups.</li>
+          <li>The 3-hour block lets diagnostic (S1) and simulation (S10) run full-length under realistic conditions in one sitting &mdash; use that, do not split tests across days.</li>
+        </ul>
+      </div>
+      <div class="pblock">
+        <h5>Progress monitoring</h5>
+        <ul>
+          <li>Three checkpoints (S4, S8, S10) logged to the existing Sheets pipeline; report % correct by GSE domain, not raw score.</li>
+          <li>Movement target: each student advances at least one domain category (Below to Approaching, or Approaching to Met) on the S10 simulation.</li>
+          <li>Students still Below in 4+ domains at S10 escalate to MTSS Tier 3 with a documented post-window plan.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plan-ush">
+  <div class="wrap">
+    <div class="priority">
+      <strong>US History &mdash; diagnostic reality</strong>
+      <p>The cohort is only 3 students, and all 3 are Below Target in 4 of 5 domains; New Republic through Reconstruction is the single domain where one student reaches Approaching. With this n and a 3-hour block, the plan is a single tutorial-intensity group, chronologically anchored: the GSE strands are sequential, so rebuilding the timeline is the intervention. The small n is an asset here &mdash; every session can run as conferenced, individualized instruction.</p>
+    </div>
+
+    <div class="planhead"><span class="tag">US History</span><h3>12-Session Sequence &middot; Mon&ndash;Thu, 9&ndash;12</h3></div>
+    <div class="weeks">
+      <div class="wk">
+        <div class="wn">Week 1 &middot; Mon&ndash;Thu (S1&ndash;S4)</div>
+        <h4>Foundations: Colonization to Reconstruction</h4>
+        <div class="foc">SSUSH1&ndash;10. The two earliest domains; without this spine the later domains cannot be reasoned through.</div>
+        <ul>
+          <li><b>S1 Mon:</b> Full diagnostic across all 5 domains (uses the long block). Each student starts a personal timeline skeleton maintained the entire window. PM half: Colonization through the Constitution &mdash; causation chains, founding documents.</li>
+          <li><b>S2 Tue:</b> New Republic through Civil War: expansion, sectionalism, cause vs effect.</li>
+          <li><b>S3 Wed:</b> Reconstruction; stimulus-based items with a source-analysis protocol.</li>
+          <li><b>S4 Thu:</b> Domains 1&ndash;2 checkpoint; timeline check-in and individual conferences (feasible with n=3).</li>
+        </ul>
+      </div>
+      <div class="wk">
+        <div class="wn">Week 2 &middot; Mon&ndash;Thu (S5&ndash;S8)</div>
+        <h4>Industrialization to World Power</h4>
+        <div class="foc">SSUSH11&ndash;18. Industrialization, Reform &amp; Imperialism, then Establishment as a World Power.</div>
+        <ul>
+          <li><b>S5 Mon:</b> Industrialization, immigration, Progressive reform.</li>
+          <li><b>S6 Tue:</b> Imperialism and WWI as cause-effect, tied back to Week 1 expansion themes.</li>
+          <li><b>S7 Wed:</b> 1920s, Depression, New Deal; political cartoon and data-stimulus practice.</li>
+          <li><b>S8 Thu:</b> WWII and emergence as a world power. Interleaved retrieval across Domains 1&ndash;4; cumulative checkpoint, conferences with all 3.</li>
+        </ul>
+      </div>
+      <div class="wk">
+        <div class="wn">Week 3 &middot; Mon&ndash;Thu (S9&ndash;S12)</div>
+        <h4>Post-WWII &amp; full integration</h4>
+        <div class="foc">SSUSH19&ndash;25, then simulated retest across the full course.</div>
+        <ul>
+          <li><b>S9 Mon:</b> Cold War, Civil Rights, modern era to present. PM half: document and stimulus strategy &mdash; sourcing, elimination, time budgeting.</li>
+          <li><b>S10 Tue:</b> Full-length simulated EOC, timed under conditions, Sheets-logged.</li>
+          <li><b>S11 Wed:</b> Targeted reteach from S10 item analysis, individualized.</li>
+          <li><b>S12 Thu:</b> Second short simulation on weakest domains; named individual exit summaries.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pgrid">
+      <div class="pblock">
+        <h5>Grouping &amp; delivery</h5>
+        <ul>
+          <li>Single tutorial group of 3. One teacher, full window, for continuity of the timeline build.</li>
+          <li>The running personal timeline is the through-line artifact; every domain hangs on it. Do not teach domains as isolated units.</li>
+          <li>With n=3 and a 3-hour block, every session is effectively 1:1 conferenced &mdash; exploit it; do not run this as whole-group lecture.</li>
+        </ul>
+      </div>
+      <div class="pblock">
+        <h5>Progress monitoring</h5>
+        <ul>
+          <li>Checkpoints S4, S8, S10 logged by SSUSH strand, reported as % correct by domain.</li>
+          <li>Movement target: every student advances at least one domain category by S10; given the n, name students individually in the exit summary.</li>
+          <li>Any student still Below in 3+ domains at S10 moves to a documented MTSS Tier 3 plan.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>Source: 698_0104 MCINTOSH ACADEMY GA Milestones EOC Spring 2026 ISR (Preliminary).</span>
+  <span>Generated for instructional coaching use &middot; Spring 2026.</span>
+</div></footer>
+
+<script>
+const DATA = {"biology": {"domains": ["Cells", "Cellular Genetics & Heredity", "Classification & Phylogeny", "Ecology", "Theory of Evolution"], "group": {"Cells": {"Below": 17, "Approaching": 8, "Met": 12}, "Cellular Genetics & Heredity": {"Below": 18, "Approaching": 8, "Met": 11}, "Classification & Phylogeny": {"Below": 14, "Approaching": 13, "Met": 10}, "Ecology": {"Below": 14, "Approaching": 11, "Met": 12}, "Theory of Evolution": {"Below": 17, "Approaching": 12, "Met": 8}}, "students": [{"name": "Christopher Mitchell", "gcs": 56, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Anthony Grant", "gcs": 59, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Marquise Robinson", "gcs": 59, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Zion Wilson", "gcs": 61, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Charles Howard", "gcs": 63, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Yarelli Bacilio", "gcs": 63, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Approaching", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Isaiah Wilson", "gcs": 64, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Approaching", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Cheyenne Neesmith", "gcs": 64, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Approaching", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Gabriella Troxler", "gcs": 66, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Michael Boone", "gcs": 67, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Approaching", "Theory of Evolution": "Approaching"}, "tier": "cohort"}, {"name": "Gage Groover", "gcs": 67, "marks": {"Cells": "Approaching", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Tyshawn Holland", "gcs": 67, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "cohort"}, {"name": "Jaeden Carter", "gcs": 72, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Approaching", "Classification & Phylogeny": "Approaching", "Ecology": "Below", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Devion Jackson", "gcs": 73, "marks": {"Cells": "Approaching", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Approaching", "Ecology": "Approaching", "Theory of Evolution": "Below"}, "tier": "above"}, {"name": "Hunter Cheek", "gcs": 73, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Approaching", "Ecology": "Approaching", "Theory of Evolution": "Below"}, "tier": "above"}, {"name": "Joshua West", "gcs": 73, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Met", "Theory of Evolution": "Below"}, "tier": "above"}, {"name": "Gunner Mckinzie", "gcs": 75, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Approaching", "Ecology": "Below", "Theory of Evolution": "Below"}, "tier": "above"}, {"name": "Ryan Kong", "gcs": 75, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Approaching", "Classification & Phylogeny": "Approaching", "Ecology": "Below", "Theory of Evolution": "Met"}, "tier": "above"}, {"name": "Galen Stamey", "gcs": 78, "marks": {"Cells": "Approaching", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Met", "Ecology": "Approaching", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Seanacy Dunwoody", "gcs": 79, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Approaching", "Ecology": "Met", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Owen Hutcheson", "gcs": 79, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Below", "Ecology": "Approaching", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Jamera Williams", "gcs": 79, "marks": {"Cells": "Approaching", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Met", "Ecology": "Approaching", "Theory of Evolution": "Below"}, "tier": "above"}, {"name": "Zyonna Collins", "gcs": 81, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Approaching", "Ecology": "Approaching", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Princeton Drake", "gcs": 82, "marks": {"Cells": "Approaching", "Cellular Genetics & Heredity": "Below", "Classification & Phylogeny": "Met", "Ecology": "Met", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Emmalyn Dennis", "gcs": 83, "marks": {"Cells": "Approaching", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Approaching", "Ecology": "Met", "Theory of Evolution": "Below"}, "tier": "above"}, {"name": "Elijha Williams", "gcs": 83, "marks": {"Cells": "Below", "Cellular Genetics & Heredity": "Approaching", "Classification & Phylogeny": "Met", "Ecology": "Met", "Theory of Evolution": "Met"}, "tier": "above"}, {"name": "Asher Smith", "gcs": 84, "marks": {"Cells": "Approaching", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Met", "Ecology": "Approaching", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Traebion Jackson", "gcs": 85, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Approaching", "Classification & Phylogeny": "Met", "Ecology": "Approaching", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Cerenity Heidt", "gcs": 85, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Approaching", "Ecology": "Approaching", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Cristina Van Daley", "gcs": 85, "marks": {"Cells": "Approaching", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Approaching", "Ecology": "Met", "Theory of Evolution": "Approaching"}, "tier": "above"}, {"name": "Ayanna Randolph", "gcs": 86, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Below", "Ecology": "Approaching", "Theory of Evolution": "Met"}, "tier": "above"}, {"name": "Hailey Long", "gcs": 87, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Approaching", "Ecology": "Met", "Theory of Evolution": "Met"}, "tier": "above"}, {"name": "Layne Shuman", "gcs": 89, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Approaching", "Classification & Phylogeny": "Met", "Ecology": "Met", "Theory of Evolution": "Met"}, "tier": "above"}, {"name": "Christopher Johnson", "gcs": 90, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Approaching", "Ecology": "Met", "Theory of Evolution": "Met"}, "tier": "above"}, {"name": "Blake Mcmahan", "gcs": 90, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Approaching", "Classification & Phylogeny": "Met", "Ecology": "Met", "Theory of Evolution": "Met"}, "tier": "above"}, {"name": "Bryson Chapman", "gcs": 92, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Met", "Ecology": "Met", "Theory of Evolution": "Met"}, "tier": "above"}, {"name": "Amariona Bradley", "gcs": 93, "marks": {"Cells": "Met", "Cellular Genetics & Heredity": "Met", "Classification & Phylogeny": "Met", "Ecology": "Met", "Theory of Evolution": "Approaching"}, "tier": "above"}], "n": 37, "cohort_n": 12}, "ushistory": {"domains": ["Colonization through the Constitution", "New Republic through Reconstruction", "Industrialization, Reform, & Imperialism", "Establishment as a World Power", "Post-World War II to the Present"], "group": {"Colonization through the Constitution": {"Below": 6, "Approaching": 3, "Met": 4}, "New Republic through Reconstruction": {"Below": 5, "Approaching": 6, "Met": 2}, "Industrialization, Reform, & Imperialism": {"Below": 5, "Approaching": 4, "Met": 4}, "Establishment as a World Power": {"Below": 4, "Approaching": 4, "Met": 5}, "Post-World War II to the Present": {"Below": 5, "Approaching": 4, "Met": 4}}, "students": [{"name": "Jiquez Billue", "gcs": 54, "marks": {"Colonization through the Constitution": "Below", "New Republic through Reconstruction": "Below", "Industrialization, Reform, & Imperialism": "Below", "Establishment as a World Power": "Below", "Post-World War II to the Present": "Below"}, "tier": "cohort"}, {"name": "Isaiah Massey", "gcs": 62, "marks": {"Colonization through the Constitution": "Below", "New Republic through Reconstruction": "Approaching", "Industrialization, Reform, & Imperialism": "Below", "Establishment as a World Power": "Below", "Post-World War II to the Present": "Below"}, "tier": "cohort"}, {"name": "Jayden Lotson", "gcs": 66, "marks": {"Colonization through the Constitution": "Below", "New Republic through Reconstruction": "Below", "Industrialization, Reform, & Imperialism": "Below", "Establishment as a World Power": "Below", "Post-World War II to the Present": "Below"}, "tier": "cohort"}, {"name": "Lachrista Young", "gcs": 70, "marks": {"Colonization through the Constitution": "Below", "New Republic through Reconstruction": "Below", "Industrialization, Reform, & Imperialism": "Approaching", "Establishment as a World Power": "Below", "Post-World War II to the Present": "Approaching"}, "tier": "above"}, {"name": "Za\u00a9Kia Johnson", "gcs": 75, "marks": {"Colonization through the Constitution": "Approaching", "New Republic through Reconstruction": "Below", "Industrialization, Reform, & Imperialism": "Below", "Establishment as a World Power": "Approaching", "Post-World War II to the Present": "Approaching"}, "tier": "above"}, {"name": "Tianna Campbell", "gcs": 77, "marks": {"Colonization through the Constitution": "Met", "New Republic through Reconstruction": "Approaching", "Industrialization, Reform, & Imperialism": "Approaching", "Establishment as a World Power": "Approaching", "Post-World War II to the Present": "Below"}, "tier": "above"}, {"name": "Gerald Poppell-O\u00a9Neal", "gcs": 77, "marks": {"Colonization through the Constitution": "Below", "New Republic through Reconstruction": "Approaching", "Industrialization, Reform, & Imperialism": "Approaching", "Establishment as a World Power": "Approaching", "Post-World War II to the Present": "Approaching"}, "tier": "above"}, {"name": "Jordin Arrington", "gcs": 78, "marks": {"Colonization through the Constitution": "Below", "New Republic through Reconstruction": "Below", "Industrialization, Reform, & Imperialism": "Met", "Establishment as a World Power": "Met", "Post-World War II to the Present": "Below"}, "tier": "above"}, {"name": "Hope Wood", "gcs": 81, "marks": {"Colonization through the Constitution": "Approaching", "New Republic through Reconstruction": "Met", "Industrialization, Reform, & Imperialism": "Below", "Establishment as a World Power": "Approaching", "Post-World War II to the Present": "Approaching"}, "tier": "above"}, {"name": "Kayden Williamson", "gcs": 84, "marks": {"Colonization through the Constitution": "Met", "New Republic through Reconstruction": "Approaching", "Industrialization, Reform, & Imperialism": "Approaching", "Establishment as a World Power": "Met", "Post-World War II to the Present": "Met"}, "tier": "above"}, {"name": "Jordan Bacon", "gcs": 85, "marks": {"Colonization through the Constitution": "Met", "New Republic through Reconstruction": "Approaching", "Industrialization, Reform, & Imperialism": "Met", "Establishment as a World Power": "Met", "Post-World War II to the Present": "Met"}, "tier": "above"}, {"name": "Eric Jackson", "gcs": 85, "marks": {"Colonization through the Constitution": "Met", "New Republic through Reconstruction": "Approaching", "Industrialization, Reform, & Imperialism": "Met", "Establishment as a World Power": "Met", "Post-World War II to the Present": "Met"}, "tier": "above"}, {"name": "Nathen O\u00a9Steen-Grovenor", "gcs": 87, "marks": {"Colonization through the Constitution": "Approaching", "New Republic through Reconstruction": "Met", "Industrialization, Reform, & Imperialism": "Met", "Establishment as a World Power": "Met", "Post-World War II to the Present": "Met"}, "tier": "above"}], "n": 13, "cohort_n": 3}};
+const SHORT = {Below:'B',Approaching:'A',Met:'M'};
+
+/* Stat strip */
+(function(){
+  const b=DATA.biology, u=DATA.ushistory;
+  const cells=[
+    {v:b.cohort_n+u.cohort_n, l:'Students in cohort', d:'GCS &le; 69, both courses', alarm:true},
+    {v:b.cohort_n+'/'+b.n, l:'Biology', d:'cohort of total tested', alarm:false},
+    {v:u.cohort_n+'/'+u.n, l:'US History', d:'cohort of total tested', alarm:false},
+    {v:pctBelow(), l:'Cohort domain marks Below', d:'across all reported domains', alarm:true}
+  ];
+  document.getElementById('statStrip').innerHTML=cells.map(c=>
+    `<div class="stat"><div class="v ${c.alarm?'alarm':''}">${c.v}</div>
+     <div class="l">${c.l}</div><div class="d">${c.d}</div></div>`).join('');
+  function pctBelow(){
+    let tot=0,bel=0;
+    for(const k of ['biology','ushistory']){
+      const d=DATA[k];
+      d.students.filter(s=>s.tier==='cohort').forEach(s=>{
+        d.domains.forEach(dm=>{tot++; if(s.marks[dm]==='Below')bel++;});
+      });
+    }
+    return Math.round(bel/tot*100)+'%';
+  }
+})();
+
+/* Whole-group bars */
+(function(){
+  const order=['Below','Approaching','Met'], cls={Below:'b',Approaching:'a',Met:'m'};
+  function card(d,title){
+    let rows=d.domains.map(dm=>{
+      const g=d.group[dm], n=g.Below+g.Approaching+g.Met;
+      const segs=order.map(o=>{
+        const p=g[o]/n*100;
+        return `<i class="${cls[o]}" style="flex:0 0 ${p}%" title="${o}: ${g[o]}">${p>11?g[o]:''}</i>`;
+      }).join('');
+      const bp=Math.round(g.Below/n*100);
+      return `<div class="drow"><div class="dl"><span>${dm}</span>
+        <span class="pct">${bp}% Below</span></div>
+        <div class="bar">${segs}</div></div>`;
+    }).join('');
+    return `<div class="gcard"><h3>${title}<span>n = ${d.n}</span></h3>${rows}</div>`;
+  }
+  document.getElementById('grpGrid').innerHTML=
+    card(DATA.biology,'Biology')+card(DATA.ushistory,'United States History');
+})();
+
+/* Matrix */
+let curSubj='biology', curSort='gcs';
+function cohort(){return DATA[curSubj].students.filter(s=>s.tier==='cohort');}
+function domains(){return DATA[curSubj].domains;}
+
+function renderSum(){
+  const doms=domains(), coh=cohort();
+  document.getElementById('cohortSum').innerHTML=doms.map(dm=>{
+    const b=coh.filter(s=>s.marks[dm]==='Below').length;
+    return `<div class="cs"><div class="nm">${dm}</div>
+      <div class="big">${b}<span style="font-size:14px;color:var(--ink-soft)">/${coh.length}</span></div>
+      <div class="sm">Below Target</div></div>`;
+  }).join('');
+}
+function renderTable(){
+  const doms=domains();
+  let rows=cohort().slice();
+  if(curSort==='gcs') rows.sort((a,b)=>a.gcs-b.gcs);
+  else if(curSort==='gcsd') rows.sort((a,b)=>b.gcs-a.gcs);
+  else if(curSort==='name') rows.sort((a,b)=>a.name.localeCompare(b.name));
+  else if(curSort==='below') rows.sort((a,b)=>
+    doms.filter(d=>b.marks[d]==='Below').length -
+    doms.filter(d=>a.marks[d]==='Below').length);
+  let head=`<tr><th class="stu">Student</th><th>GCS</th>`+
+    doms.map(d=>`<th>${d}</th>`).join('')+`</tr>`;
+  let body=rows.map(s=>{
+    const cells=doms.map(d=>{
+      const m=SHORT[s.marks[d]];
+      return `<td class="cell ${m}">${s.marks[d]}</td>`;
+    }).join('');
+    return `<tr><td class="stu">${s.name}</td>
+      <td class="gcs ${s.gcs<=69?'gcs-bad':''}">${s.gcs}</td>${cells}</tr>`;
+  }).join('');
+  document.getElementById('mtable').innerHTML=head+body;
+}
+function refresh(){renderSum();renderTable();}
+document.querySelectorAll('#subjSeg button').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('#subjSeg button').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on'); curSubj=btn.dataset.s; refresh();
+  };
+});
+document.getElementById('sortSel').onchange=e=>{curSort=e.target.value;renderTable();};
+refresh();
+</script>
+</body>
+</html>
